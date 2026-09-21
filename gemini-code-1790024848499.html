@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Para Danna 💛</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0d1b2a, #1b263b, #415a77);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow-x: hidden;
+      color: #fff;
+      padding: 20px;
+    }
+
+    /* Contenedor del Mensaje */
+    .card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      padding: 30px;
+      max-width: 450px;
+      text-align: center;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+      z-index: 10;
+      animation: fadeIn 2s ease-in-out;
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      color: #ffe600;
+      text-shadow: 0 0 10px rgba(255, 230, 0, 0.5);
+      margin-bottom: 12px;
+    }
+
+    p {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: #e0e1dd;
+    }
+
+    /* Animación de entrada de la carta */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Escenario de las flores */
+    .flowers-container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 30px;
+      height: 250px;
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Estructura de la Flor */
+    .flower {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transform-origin: bottom center;
+      animation: grow 2s ease-out forwards, sway 4s ease-in-out infinite 2s;
+    }
+
+    .stem {
+      width: 8px;
+      height: 140px;
+      background: linear-gradient(to top, #2d6a4f, #52b788);
+      border-radius: 4px;
+    }
+
+    .leaf {
+      position: absolute;
+      width: 30px;
+      height: 15px;
+      background: #52b788;
+      border-radius: 20px 0;
+      top: 60px;
+    }
+
+    .leaf.left {
+      left: -25px;
+      transform: rotate(-30deg);
+    }
+
+    .leaf.right {
+      right: -25px;
+      transform: scaleX(-1) rotate(-30deg);
+    }
+
+    .petals-container {
+      position: absolute;
+      top: -35px;
+      width: 80px;
+      height: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .center-circle {
+      width: 28px;
+      height: 28px;
+      background: #6c584c;
+      border-radius: 50%;
+      z-index: 5;
+      box-shadow: inset 0 0 5px #3a2e2b;
+    }
+
+    .petal {
+      position: absolute;
+      width: 22px;
+      height: 45px;
+      background: linear-gradient(to top, #ffb703, #ffea00);
+      border-radius: 50% 50% 10% 10%;
+      transform-origin: bottom center;
+      box-shadow: 0 0 10px rgba(255, 230, 0, 0.4);
+    }
+
+    /* Rotación de pétalos en círculo */
+    .petal:nth-child(1) { transform: rotate(0deg) translateY(-20px); }
+    .petal:nth-child(2) { transform: rotate(45deg) translateY(-20px); }
+    .petal:nth-child(3) { transform: rotate(90deg) translateY(-20px); }
+    .petal:nth-child(4) { transform: rotate(135deg) translateY(-20px); }
+    .petal:nth-child(5) { transform: rotate(180deg) translateY(-20px); }
+    .petal:nth-child(6) { transform: rotate(225deg) translateY(-20px); }
+    .petal:nth-child(7) { transform: rotate(270deg) translateY(-20px); }
+    .petal:nth-child(8) { transform: rotate(315deg) translateY(-20px); }
+
+    /* Animaciones de Crecimiento y Balanceo */
+    @keyframes grow {
+      from { transform: scale(0); }
+      to { transform: scale(1); }
+    }
+
+    @keyframes sway {
+      0%, 100% { transform: rotate(0deg); }
+      50% { transform: rotate(3deg); }
+    }
+
+    /* Pétalos flotantes de fondo */
+    .falling-petal {
+      position: fixed;
+      top: -10px;
+      background: #ffea00;
+      border-radius: 50% 0 50% 50%;
+      opacity: 0.7;
+      pointer-events: none;
+      z-index: 1;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(105vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>Para Danna 💛</h1>
+    <p>
+      Aunque estemos a la distancia, no quería dejar pasar la oportunidad de enviarte este pequeño detalle. Espero que estas flores amarillas alegren tu día tanto como tú alegras el mío. ✨
+    </p>
+  </div>
+
+  <div class="flowers-container">
+    <!-- Flor 1 -->
+    <div class="flower" style="animation-delay: 0.2s, 2.2s;">
+      <div class="petals-container">
+        <div class="petal"></div><div class="petal"></div>
+        <div class="petal"></div><div class="petal"></div>
+        <div class="petal"></div><div class="petal"></div>
+        <div class="petal"></div><div class="petal"></div>
+        <div class="center-circle"></div>
+      </div>
+      <div class="stem">
+        <div class="leaf left"></div>
+        <div class="leaf right"></div>
+      </div>
+    </div>
+
+    <!-- Flor 2 (Centro) -->
+    <div class="flower" style="animation-delay: 0s, 2s; transform: scale(1.15);">
+      <div class="petals-container">
+        <div class="petal"></div><div class="petal"></div>
+        <div class="petal"></div><div class="petal"></div>
+        <div class="petal"></div><div class="petal"></div>
+        <div class="petal"></div><div class="petal"></div>
+        <div class="center-circle"></div>
+      </div>
+      <div class="stem">
+        <div class="leaf left"></div>
+        <div class="leaf right"></div>
+      </div>
+    </div>
+
+    <!-- Flor 3 -->
+    <div class="flower" style="animation-delay: 0.4s, 2.4s;">
+      <div class="petals-container">
+        <div class="petal"></div><div class="petal"></div>
+        <div class="petal"></div><div class="petal"></div>
+        <div class="petal"></div><div class="petal"></div>
+        <div class="petal"></div><div class="petal"></div>
+        <div class="center-circle"></div>
+      </div>
+      <div class="stem">
+        <div class="leaf left"></div>
+        <div class="leaf right"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Generador de pétalos cayendo suavemente
+    function createPetal() {
+      const petal = document.createElement('div');
+      petal.classList.add('falling-petal');
+      
+      const size = Math.random() * 10 + 10;
+      petal.style.width = `${size}px`;
+      petal.style.height = `${size + 5}px`;
+      petal.style.left = Math.random() * 100 + 'vw';
+      petal.style.animationDuration = Math.random() * 3 + 4 + 's';
+      
+      document.body.appendChild(petal);
+
+      setTimeout(() => {
+        petal.remove();
+      }, 7000);
+    }
+
+    setInterval(createPetal, 300);
+  </script>
+</body>
+</html>
