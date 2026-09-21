@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Para Danna 💛</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      /* Cielo morado, rosa y azul */
+      background: linear-gradient(to bottom, #1d1135 0%, #3c1642 35%, #8c2f5e 65%, #b85b72 85%, #d88373 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow: hidden;
+      color: #fff;
+      position: relative;
+    }
+
+    /* Sol suave / Resplandor al fondo */
+    .sun-glow {
+      position: absolute;
+      bottom: 120px;
+      width: 250px;
+      height: 250px;
+      background: radial-gradient(circle, rgba(255, 234, 167, 0.4) 0%, rgba(255, 184, 184, 0) 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Tarjeta del Mensaje */
+    .card-container {
+      margin-top: 40px;
+      z-index: 20;
+      padding: 0 20px;
+    }
+
+    .card {
+      background: rgba(20, 10, 35, 0.45);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 230, 150, 0.3);
+      border-radius: 24px;
+      padding: 35px 30px;
+      max-width: 480px;
+      text-align: center;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 230, 0, 0.15);
+      animation: floatCard 4s ease-in-out infinite alternate, fadeIn 1.5s ease-out;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      color: #ffea00;
+      text-shadow: 0 0 12px rgba(255, 234, 0, 0.6), 0 2px 4px rgba(0,0,0,0.5);
+      margin-bottom: 15px;
+      font-weight: 700;
+    }
+
+    p {
+      font-size: 1.15rem;
+      line-height: 1.7;
+      color: #f0e6f6;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    }
+
+    @keyframes floatCard {
+      0% { transform: translateY(0px); }
+      100% { transform: translateY(-10px); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* Campo de Flores */
+    .field {
+      position: relative;
+      width: 100vw;
+      height: 320px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      z-index: 10;
+      overflow: hidden;
+    }
+
+    /* Lomas/Colinas del fondo */
+    .hill-back {
+      position: absolute;
+      bottom: 0;
+      width: 120vw;
+      height: 180px;
+      background: #183020;
+      border-radius: 50% 50% 0 0;
+      z-index: 2;
+    }
+
+    .hill-front {
+      position: absolute;
+      bottom: -20px;
+      width: 130vw;
+      height: 150px;
+      background: #0f2316;
+      border-radius: 50% 50% 0 0;
+      z-index: 3;
+    }
+
+    .flowers-row {
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
+      max-width: 1000px;
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-end;
+      z-index: 5;
+      padding: 0 20px;
+    }
+
+    /* Estructura de las Flores */
+    .flower {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transform-origin: bottom center;
+      animation: sway 5s ease-in-out infinite alternate;
+    }
+
+    /* Talles dinámicos */
+    .stem {
+      background: linear-gradient(to top, #1e4d2b, #43a047);
+      border-radius: 4px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    }
+
+    .leaf {
+      position: absolute;
+      background: #43a047;
+      border-radius: 20px 0;
+      box-shadow: inset -2px -2px 4px rgba(0,0,0,0.2);
+    }
+
+    .leaf.left {
+      left: -60%;
+      transform: rotate(-35deg);
+    }
+
+    .leaf.right {
+      right: -60%;
+      transform: scaleX(-1) rotate(-35deg);
+    }
+
+    /* Cabeza de la Flor */
+    .flower-head {
+      position: absolute;
+      top: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transform: translateY(-50%);
+    }
+
+    .center-circle {
+      background: radial-gradient(circle, #5d4037 0%, #3e2723 100%);
+      border-radius: 50%;
+      z-index: 6;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+    }
+
+    .petal {
+      position: absolute;
+      background: linear-gradient(to top, #ffb300, #ffee58);
+      border-radius: 50% 50% 20% 20%;
+      transform-origin: bottom center;
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    }
+
+    /* Rotación de pétalos */
+    .p1  { transform: rotate(0deg) translateY(-50%); }
+    .p2  { transform: rotate(30deg) translateY(-50%); }
+    .p3  { transform: rotate(60deg) translateY(-50%); }
+    .p4  { transform: rotate(90deg) translateY(-50%); }
+    .p5  { transform: rotate(120deg) translateY(-50%); }
+    .p6  { transform: rotate(150deg) translateY(-50%); }
+    .p7  { transform: rotate(180deg) translateY(-50%); }
+    .p8  { transform: rotate(210deg) translateY(-50%); }
+    .p9  { transform: rotate(240deg) translateY(-50%); }
+    .p10 { transform: rotate(270deg) translateY(-50%); }
+    .p11 { transform: rotate(300deg) translateY(-50%); }
+    .p12 { transform: rotate(330deg) translateY(-50%); }
+
+    /* Variaciones de tamaño para dar realismo de campo */
+    .flower.large {
+      scale: 1.3;
+      animation-duration: 4s;
+    }
+    .flower.large .stem { width: 10px; height: 180px; }
+    .flower.large .center-circle { width: 36px; height: 36px; }
+    .flower.large .petal { width: 22px; height: 50px; }
+    .flower.large .leaf { width: 35px; height: 18px; top: 80px; }
+
+    .flower.medium {
+      scale: 1;
+      animation-duration: 5.5s;
+      animation-delay: -1s;
+    }
+    .flower.medium .stem { width: 8px; height: 140px; }
+    .flower.medium .center-circle { width: 28px; height: 28px; }
+    .flower.medium .petal { width: 18px; height: 40px; }
+    .flower.medium .leaf { width: 28px; height: 14px; top: 60px; }
+
+    .flower.small {
+      scale: 0.75;
+      animation-duration: 4.5s;
+      animation-delay: -2s;
+    }
+    .flower.small .stem { width: 6px; height: 110px; }
+    .flower.small .center-circle { width: 22px; height: 22px; }
+    .flower.small .petal { width: 14px; height: 30px; }
+    .flower.small .leaf { width: 22px; height: 10px; top: 45px; }
+
+    @keyframes sway {
+      0% { transform: rotate(-4deg); }
+      100% { transform: rotate(5deg); }
+    }
+
+    /* Partículas de luz y pétalos cayendo */
+    .sparkle {
+      position: fixed;
+      background: #fff59d;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 2;
+      box-shadow: 0 0 10px #ffea00;
+      animation: floatSparkle linear infinite;
+    }
+
+    @keyframes floatSparkle {
+      0% { transform: translateY(100vh) scale(0); opacity: 0; }
+      50% { opacity: 0.8; }
+      100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+    }
+
+    .falling-petal {
+      position: fixed;
+      top: -20px;
+      background: linear-gradient(to bottom, #ffee58, #ffb300);
+      border-radius: 50% 0 50% 50%;
+      opacity: 0.8;
+      pointer-events: none;
+      z-index: 15;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(105vh) rotate(540deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="sun-glow"></div>
+
+  <!-- Contenedor del Mensaje -->
+  <div class="card-container">
+    <div class="card">
+      <h1>Para Danna 💛</h1>
+      <p>
+        Aunque estemos a la distancia, no quería dejar pasar la oportunidad de enviarte este pequeño detalle. Espero que estas flores amarillas alegren tu día.
+      </p>
+    </div>
+  </div>
+
+  <!-- Campo de Flores -->
+  <div class="field">
+    <div class="hill-back"></div>
+    <div class="hill-front"></div>
+
+    <div class="flowers-row">
+      <!-- Flor 1 -->
+      <div class="flower small">
+        <div class="flower-head">
+          <div class="petal p1"></div><div class="petal p2"></div><div class="petal p3"></div>
+          <div class="petal p4"></div><div class="petal p5"></div><div class="petal p6"></div>
+          <div class="petal p7"></div><div class="petal p8"></div><div class="petal p9"></div>
+          <div class="petal p10"></div><div class="petal p11"></div><div class="petal p12"></div>
+          <div class="center-circle"></div>
+        </div>
+        <div class="stem"><div class="leaf left"></div><div class="leaf right"></div></div>
+      </div>
+
+      <!-- Flor 2 -->
+      <div class="flower medium">
+        <div class="flower-head">
+          <div class="petal p1"></div><div class="petal p2"></div><div class="petal p3"></div>
+          <div class="petal p4"></div><div class="petal p5"></div><div class="petal p6"></div>
+          <div class="petal p7"></div><div class="petal p8"></div><div class="petal p9"></div>
+          <div class="petal p10"></div><div class="petal p11"></div><div class="petal p12"></div>
+          <div class="center-circle"></div>
+        </div>
+        <div class="stem"><div class="leaf left"></div><div class="leaf right"></div></div>
+      </div>
+
+      <!-- Flor Principal (Grande - Centro) -->
+      <div class="flower large">
+        <div class="flower-head">
+          <div class="petal p1"></div><div class="petal p2"></div><div class="petal p3"></div>
+          <div class="petal p4"></div><div class="petal p5"></div><div class="petal p6"></div>
+          <div class="petal p7"></div><div class="petal p8"></div><div class="petal p9"></div>
+          <div class="petal p10"></div><div class="petal p11"></div><div class="petal p12"></div>
+          <div class="center-circle"></div>
+        </div>
+        <div class="stem"><div class="leaf left"></div><div class="leaf right"></div></div>
+      </div>
+
+      <!-- Flor 4 -->
+      <div class="flower medium">
+        <div class="flower-head">
+          <div class="petal p1"></div><div class="petal p2"></div><div class="petal p3"></div>
+          <div class="petal p4"></div><div class="petal p5"></div><div class="petal p6"></div>
+          <div class="petal p7"></div><div class="petal p8"></div><div class="petal p9"></div>
+          <div class="petal p10"></div><div class="petal p11"></div><div class="petal p12"></div>
+          <div class="center-circle"></div>
+        </div>
+        <div class="stem"><div class="leaf left"></div><div class="leaf right"></div></div>
+      </div>
+
+      <!-- Flor 5 -->
+      <div class="flower small">
+        <div class="flower-head">
+          <div class="petal p1"></div><div class="petal p2"></div><div class="petal p3"></div>
+          <div class="petal p4"></div><div class="petal p5"></div><div class="petal p6"></div>
+          <div class="petal p7"></div><div class="petal p8"></div><div class="petal p9"></div>
+          <div class="petal p10"></div><div class="petal p11"></div><div class="petal p12"></div>
+          <div class="center-circle"></div>
+        </div>
+        <div class="stem"><div class="leaf left"></div><div class="leaf right"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Crear pétalos cayendo
+    function createFallingPetal() {
+      const petal = document.createElement('div');
+      petal.classList.add('falling-petal');
+      
+      const size = Math.random() * 10 + 12;
+      petal.style.width = `${size}px`;
+      petal.style.height = `${size + 6}px`;
+      petal.style.left = Math.random() * 100 + 'vw';
+      petal.style.animationDuration = Math.random() * 3 + 5 + 's';
+      
+      document.body.appendChild(petal);
+      setTimeout(() => petal.remove(), 8000);
+    }
+
+    // Crear luciérnagas/brillos flotantes
+    function createSparkle() {
+      const sparkle = document.createElement('div');
+      sparkle.classList.add('sparkle');
+      
+      const size = Math.random() * 4 + 2;
+      sparkle.style.width = `${size}px`;
+      sparkle.style.height = `${size}px`;
+      sparkle.style.left = Math.random() * 100 + 'vw';
+      sparkle.style.animationDuration = Math.random() * 4 + 4 + 's';
+      
+      document.body.appendChild(sparkle);
+      setTimeout(() => sparkle.remove(), 8000);
+    }
+
+    setInterval(createFallingPetal, 400);
+    setInterval(createSparkle, 300);
+  </script>
+</body>
+</html>
